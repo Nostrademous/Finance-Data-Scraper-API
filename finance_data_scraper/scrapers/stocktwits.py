@@ -24,7 +24,7 @@ def get_bullish_sentiment(ticker_symbol, page=None):
     if not sentiment:
         return None
     else:
-        return sentiment[0].replace("\n", "") + " Bullish"
+        return sentiment[0].replace("\n", "").replace("%", "")
 
 def get_bearish_sentiment(ticker_symbol, page=None):
     """
@@ -41,7 +41,7 @@ def get_bearish_sentiment(ticker_symbol, page=None):
     if not sentiment:
         return None
     else:
-        return sentiment[0].replace("\n", "") + " Bearish"
+        return sentiment[0].replace("\n", "").replace("%", "")
 
 def get_sentiment(ticker_symbol, page=None):
     """
@@ -59,8 +59,8 @@ def get_sentiment(ticker_symbol, page=None):
     if bullish_sentiment:
         return bullish_sentiment, get_bearish_sentiment(ticker_symbol, page)
     else:
-        return None
+        return None, None
 
 if __name__ == "__main__":
     # Test cases
-    print(get_sentiment("AAPL"))
+    print(get_sentiment("GOOG"))
