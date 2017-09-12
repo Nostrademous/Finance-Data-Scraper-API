@@ -17,7 +17,7 @@ def scrape_page(url):
     if cached_page:
         return html.fromstring(cached_page)
     else:
-        page = get(url)
+        page = get(url, headers={'User-Agent': 'Firefox/12.0'})
 
         cache.set(url, page.text)
 
