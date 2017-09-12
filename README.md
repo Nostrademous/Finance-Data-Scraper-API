@@ -11,23 +11,21 @@ It is written in Python 3 and mainly  uses flask, tornado, requests, and lxml
 Installation
 -----------
 ```
-$ git clone https://github.com/ajpotato214/Finance-Data-Scraper-API.git
-$ sudo python3 setup.py install
-```
-And then cross your fingers ...
-
-Or Alternatively if you have Docker installed, build from the provided Dockerfile and run!.
-```
-$ docker build -t finance_data_scraper_api - < Dockerfile
-$ docker run --net="host" -it finance_data_scraper_api
-Starting ... go get that alpha!
+$ git clone https://github.com/Nostrademous/Finance-Data-Scraper-API.git
+$ pip install -r requirements.pip
+$ python setup.py install
 ```
 
 Usage
 -----
-Run the webserver:
+For the CLI Variant run androrithm: (Currently In Development)
 ```
-$ python3 webserver.py
+$ python androrithm.py
+```
+
+For the RESTful Interface Variant run the webserver:
+```
+$ python webserver.py
 Starting ... go get that alpha!
 ```
 
@@ -128,8 +126,8 @@ $ curl http://localhost:8080/finance/stocktwits/sentiment/AAPL
 ```
 ```
 {
-  "bearish": "42% Bearish",
-  "bullish": "58% Bullish"
+  "bearish": "42",
+  "bullish": "58"
 }
 ```
 ### Disclaimer
