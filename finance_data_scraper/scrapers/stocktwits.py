@@ -22,7 +22,7 @@ def get_bullish_sentiment(ticker_symbol, page=None):
     sentiment = page.xpath(BULLISH_SENTIMENT_XPATH)
 
     if not sentiment:
-        return None
+        return "0"
     else:
         return sentiment[0].replace("\n", "").replace("%", "")
 
@@ -39,7 +39,7 @@ def get_bearish_sentiment(ticker_symbol, page=None):
     sentiment = page.xpath(BEARISH_SENTIMENT_XPATH)
 
     if not sentiment:
-        return None
+        return "0"
     else:
         return sentiment[0].replace("\n", "").replace("%", "")
 
@@ -59,7 +59,7 @@ def get_sentiment(ticker_symbol, page=None):
     if bullish_sentiment:
         return bullish_sentiment, get_bearish_sentiment(ticker_symbol, page)
     else:
-        return None, None
+        return "0", "0"
 
 if __name__ == "__main__":
     # Test cases

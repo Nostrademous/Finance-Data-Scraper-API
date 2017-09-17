@@ -24,7 +24,7 @@ def get_rating(ticker_symbol, page=None):
     rating = page.xpath(RATING_XPATH)
 
     if not rating:
-        return None
+        return "N/A"
     else:
         return rating[0]
 
