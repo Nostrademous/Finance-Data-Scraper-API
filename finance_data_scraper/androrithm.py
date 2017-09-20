@@ -6,10 +6,7 @@ from datetime import datetime
 from requests import get
 from scrapers import finviz, stocktwits, zacks
 
-exitFlag = 0
-eod_data = {}
-
-global workQueue, queueLock
+global exitFlag, eod_data, workQueue, queueLock
 
 class myThread (threading.Thread):
    def __init__(self, threadID, name, q):
@@ -38,6 +35,8 @@ def write_json_to_file(filename, data):
         json.dump(data, outfile, indent=2)
 
 def get_symbol_data(threadName, q):
+    global eod_data, exitFlag
+    
     while not exitFlag:
         queueLock.acquire()
         if not workQueue.empty():
@@ -63,7 +62,11 @@ def get_symbol_data(threadName, q):
 def get_eod_data(symbols):
     global workQueue
     global queueLock
-    
+    global eod_data
+    global exitFlag
+
+    eod_data = {}
+    exitFlag = 0
     threadList = ["Thr1", "Thr2", "Thr3", "Thr4", "Thr5", "Thr6", "Thr7", "Thr8", "Thr9", "Thr10"]
     queueLock = threading.Lock()
     workQueue = queue.Queue(6000)
